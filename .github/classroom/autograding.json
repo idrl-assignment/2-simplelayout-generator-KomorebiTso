@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "代码规范",
+      "setup": "sudo -H pip3 install flake8",
+      "run": "flake8 . --count --show-source --statistics",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "generate_matrix()",
+      "setup": "sudo -H python3 -m pip install --upgrade pip setuptools wheel && sudo -H pip3 install -r requirements.txt",
+      "run": "pytest -k test_generate_matrix",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "main()",
+      "setup": "sudo -H python3 -m pip install --upgrade pip setuptools wheel && sudo -H pip3 install -r requirements.txt",
+      "run": "pytest -k test_cli_module",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "save_matrix()",
+      "setup": "sudo -H python3 -m pip install --upgrade pip setuptools wheel && sudo -H pip3 install -r requirements.txt",
+      "run": "pytest -k test_mat",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "save_fig()",
+      "setup": "sudo -H python3 -m pip install --upgrade pip setuptools wheel && sudo -H pip3 install -r requirements.txt",
+      "run": "pytest -k test_jpg",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "make_dir()",
+      "setup": "sudo -H python3 -m pip install --upgrade pip setuptools wheel && sudo -H pip3 install -r requirements.txt",
+      "run": "pytest -k test_mkdir",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
