@@ -2,4 +2,8 @@ pytest
 numpy
 matplotlib
 scipy
-# TODO: add additional package
+argparse
+os
+sys
+pathlib
+scipy
