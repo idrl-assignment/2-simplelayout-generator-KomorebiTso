@@ -1,44 +1,42 @@
 """
 数据生成的主要逻辑
 """
-
-
 import numpy as np
 
 
 def generate_matrix(
     board_grid: int, unit_grid: int, unit_n: int, positions: list
 ):
-    BJB = np.zeros((board_grid, board_grid))
-    length = int(board_grid / unit_grid)
-    length1 = int((board_grid**2) / unit_grid)
-
-    BJB = np.lib.stride_tricks.as_strided(
-        BJB, shape=(unit_grid, unit_grid, length, length),
-        strides=BJB.itemsize.np.array([length1, length, board_grid, 1])
-    )
-
-    list1 = []
-    list2 = []
+    BJB = np.mat(np.zeros((board_grid, board_grid)))
+    print(BJB)
+    L1 = board_grid // unit_grid
+    shape = (unit_grid, unit_grid, L1, L1)
+    print(BJB.strides)
+    da = board_grid * unit_grid
+    db = unit_grid
+    xa = board_grid
+    xb = 1
+    strides = BJB.itemsize * np.array([da, db, xa, xb])
+    BJB_2 = np.lib.stride_tricks.as_strided(BJB, shape=shape, strides=strides)
+    Fenkuai = np.mat(np.ones((unit_grid, unit_grid)))
+    a = []
+    b = []
     for i in positions:
-        list1.append((i - 1) // length)
-        list2.append((i - 1) % length)
-    z = list(zip(list1, list2))
-
-    fill = np.ones((unit_grid, unit_grid), int)
+        a.append((i - 1) // L1)
+        b.append((i - 1) % L1)
+        z = list(zip(a, b))
     for i in z:
-        BJB[i] = fill
+        BJB_2[i] = Fenkuai
 
-    a = BJB[0]
-    for i in range(length - 1):
-        b = BJB[i + 1]
-        img1 = np.concatenate((a, b), axis=1)
-        a = img1
+    K1 = BJB_2[0]
+    for i in range(L1 - 1):
+        K2 = BJB_2[i + 1]
+        BJB_3 = np.concatenate((K1, K2), axis=1)
+        K1 = BJB_3
 
-    a = img1[0]
-    for i in range(length - 1):
-        b = img1[i + 1]
-        image = np.concatenate((a, b), axis=1)
-        a = image
-
-    return image
+    K1 = BJB_3[0]
+    for i in range(L1 - 1):
+        K2 = BJB_3[i + 1]
+        BJB_f = np.concatenate((K1, K2), axis=1)
+        K1 = BJB_f
+    return BJB_f
